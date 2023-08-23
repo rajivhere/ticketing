@@ -5,7 +5,7 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 import { OrderCancelledListener } from './events/listeners/order-cancelled-listener';
 
 const start = async ()=>{
-  console.log("Staring payments service...");  
+  console.log("payments service starting...");  
 
 
 if(!process.env.JWT_KEY)
