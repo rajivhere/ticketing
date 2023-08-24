@@ -13,8 +13,7 @@ spec:
         app: orders
     spec:
       containers:
-        - name: orders
-          #image: us.gcr.io/ticketing-dev-395421/orders
+        - name: orders          
           image: rajivhere/orders
           env:
             - name: NATS_CLIENT_ID
