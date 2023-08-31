@@ -2,16 +2,17 @@ apiVersion: skaffold/v4beta3
 kind: Config
 manifests:
     rawYaml:
-     - ./infra/k8s/*
-     - ./infra/k8s-dev/*
+     #- ./infra/k8s/*
+     #- ./infra/k8s-dev/*
+     - ./infra/k8s-dev-gce/*
 build:
-  local:
-    push: false
-  #googleCloudBuild:
-    #projectId: ticketing-dev-395421   
+  #local:
+    #push: false
+  googleCloudBuild:
+    projectId: ticketing-dev-395421   
   artifacts:
-    #- image: us.gcr.io/ticketing-dev-395421/auth
-    - image: rajivhere/auth
+    - image: us.gcr.io/ticketing-dev-395421/auth
+    #- image: rajivhere/auth
       context: auth
       docker:
        dockerfile: Dockerfile
@@ -19,8 +20,8 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .    
-    #- image: us.gcr.io/ticketing-dev-395421/client
-    - image: rajivhere/client
+    - image: us.gcr.io/ticketing-dev-395421/client
+    #- image: rajivhere/client
       context: client
       docker:
        dockerfile: Dockerfile
@@ -28,8 +29,8 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
-    #- image: us.gcr.io/ticketing-dev-395421/tickets
-    - image: rajivhere/tickets
+    - image: us.gcr.io/ticketing-dev-395421/tickets
+    #- image: rajivhere/tickets
       context: tickets
       docker:
        dockerfile: Dockerfile
@@ -37,8 +38,8 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    #- image: us.gcr.io/ticketing-dev-395421/orders
-    - image: rajivhere/orders
+    - image: us.gcr.io/ticketing-dev-395421/orders
+    #- image: rajivhere/orders
       context: orders
       docker:
        dockerfile: Dockerfile
@@ -46,8 +47,8 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    #- image: us.gcr.io/ticketing-dev-395421/expiration
-    - image: rajivhere/expiration
+    - image: us.gcr.io/ticketing-dev-395421/expiration
+    #- image: rajivhere/expiration
       context: expiration
       docker:
         dockerfile: Dockerfile
@@ -55,8 +56,8 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    #- image: us.gcr.io/ticketing-dev-395421/payments
-    - image: rajivhere/payments
+    - image: us.gcr.io/ticketing-dev-395421/payments
+    #- image: rajivhere/payments
       context: payments
       docker:
         dockerfile: Dockerfile
